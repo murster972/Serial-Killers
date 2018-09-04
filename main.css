@@ -1,0 +1,103 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#map {
+    width:100%;
+    top:0;
+    bottom:0;
+    position:absolute;
+    z-index: 5;
+}
+
+.countryInfo {
+    width: auto;
+    height: auto;
+    /* border-radius: 5%; */
+    position: absolute;
+    z-index: 6;
+}
+
+.countryTitle {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    background-color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    font-size: 12px;
+    color: #fff;
+}
+
+.countryInfo .flag {
+    width: 22px;
+    height: 15px;
+    margin-left: 5px;
+}
+
+.countryInfo:active .popup, .countryInfo .popup:hover, .countryInfo .popup:active {
+    display: block;
+}
+
+.countryInfo:hover{
+    z-index: 7;
+}
+
+.countryInfo .popup {
+    width: 400px;
+    height: auto;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    color: #000;
+    font-size: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+    padding: 5px;
+}
+
+.countryInfo .popup .sep {
+    width: 90%;
+    height: 2px;
+    background-color: #000;
+}
+
+.countryInfo .popup img {
+    width: 70px;
+    height: 50px;
+}
+
+.countryInfo .killerInfo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.countryInfo .killerInfo div {
+    width: 50px;
+    height: 50px;
+    background: red;
+    border-radius: 100%;
+    background-image: url("http://www.free-icons-download.net/images/anonymous-icons-16857.png");
+    background-size: contain;
+}
+
+.countryInfo .killerInfo h2 {
+    width: 300px;
+    margin-left: 10px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.countryInfo .killerInfo h3 {
+    width: 80%;
+    margin-left: 10px;
+}
