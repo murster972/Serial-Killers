@@ -80,7 +80,7 @@
     margin-top: 10px;
 }
 
-.countryInfo .killerInfo div {
+.countryInfo .killerInfo .img {
     width: 50px;
     height: 50px;
     background: red;
@@ -90,7 +90,7 @@
 }
 
 .countryInfo .killerInfo h2 {
-    width: 300px;
+    width: calc(100% - 50px - 10px);
     margin-left: 10px;
     display: flex;
     /* justify-content: center; */
@@ -98,6 +98,11 @@
 }
 
 .countryInfo .killerInfo h3 {
-    width: 80%;
-    margin-left: 10px;
+    width: 100%;
+    margin-left: 60px;
+}
+
+.countryInfo .killerInfo p {
+    padding: 5px;
+    margin-top: 5px;
 }

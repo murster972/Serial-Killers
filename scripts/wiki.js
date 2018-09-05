@@ -14,23 +14,30 @@ function getSerialKillerData(){
     }
 }
 
-function getImage(){
+/* returns url of image of serial killer */
+function getKillerImage(name){
+    $.ajax({
+        type: "GET",
+        url: "https://en.wikipedia.org/w/api.php?action=query&titles=" + name + "&prop=pageimages&format=json",
+        contentType: "application/json; charset=utf-8",
+        async: true,
+        dataType: "jsonp",
+        success: function(d){
+            let page = d["query"]["pages"];
+            let key = Object.keys(page)[0];
 
-    //BUG: the SHITE fucking code below is unable to send and recv a response to/from wiki api
-    //     to get the json data.
-    // $.ajax({
-    //     type: "GET",
-    //     url: "http://en.wikipedia.org/w/api.php?action=query&titles=Ted Bundy&prop=pageimages&format=json",
-    //     contentType: "application/json; charset=utf-8",
-    //     async: true,
-    //     dataType: "json",
-    //     success: function(d, textStatus, jqXHR){
-    //         console.log(d);
-    //     },
-    //     error: function(err){
-    //         console.log("error", err);
-    //     }
-    // })
+            // returns stock photo if no image returned
+            if("thumbnail" in page[key]){
+                return page[key]["thumbnail"]["source"];
+            } else{
+                return "http://www.free-icons-download.net/images/anonymous-icons-16857.png"
+            }
+        },
+        error: function(err){
+            return "http://www.free-icons-download.net/images/anonymous-icons-16857.png"
+            console.log("error", err);
+        }
+    })
 }
 
 function getWikiData(url){
@@ -156,6 +163,11 @@ function parseWikiResults(data){
 
             colCount = 0;
             cols = [];
+
+            // get img for killer
+            tmp = getKillerImage(name);
+            console.log(tmp)
+            killersInfo[name]["imageURL"] = tmp;
         }
 
         if(lines[i].includes("<td>")){

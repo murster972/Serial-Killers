@@ -11,13 +11,6 @@ getSerialKillerData();
 var countries = {};
 var maxVictims = 0;
 
-$(document).ready(function(){
-    $(".countryInfo").hover(function(){
-        console.log(this)
-        // $(this).toggleClass("show");
-    })
-})
-
 // required to use functions in p5.js
 function setup(){}
 function draw(){}
@@ -139,8 +132,10 @@ function createMap(){
         for(let killer of marker["killers"]){
             let i = killersInfo[killer]
 
+            console.log(i["imageURL"])
+
             let d = "<div class='killerInfo'>\
-                        <div class='img'></div>\
+                        <img class='img' src='" + i["imageURL"] +"'>\
                         <h2>" + killer + "</h2>\
                         <h3>Proven Victims: " + i["Proven Victims"].toString() + "</h3>\
                         <h3>Active: " + i["Years Active"]["start"].toString() + " to " + i["Years Active"]["end"].toString() + "</h3>\
@@ -151,8 +146,8 @@ function createMap(){
 
         // info for on click
         let expandDiv = "<div class='popup'>\
-            <p>Victim Count: " + marker["victim count"] + "</p>\
-            <p>Number of Killers: " + marker["killer count"] + "</p>\
+            <h3>" + marker["countryName"] + " Victim Count: " + marker["victim count"] + "</h3>\
+            <h3>" + marker["countryName"] +" Number of Killers: " + marker["killer count"] + "</h3>\
             " + info + "\
         </div>"
 
